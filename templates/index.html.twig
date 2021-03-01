@@ -1,0 +1,12 @@
+{% extends 'base.html.twig'%}
+
+{% block title %}{{parent()}}{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row mt-2">
+        <h2 class="mx-auto">Lista de contactos</h2>
+        {% include 'table.html.twig' with contacts %}
+    </div>
+</div>
+{% endblock %}

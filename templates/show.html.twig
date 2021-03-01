@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}diary-Symfony{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="jumbotron my-2">
+                <h1 class="display-4">{{contact.name}} {{contact.lastName}}</h1>
+                <p class="lead">{{contact.phone}}</p>
+                <p class="lead">{{contact.email}}</p>
+                <p>{{contact.Tipocontacto | upper}}</p>
+                <hr class="my-4">
+                <div class="btn-group" role="group">
+                    <a class="btn btn-info text-white" href="{{path('diary')}}">Volver</a>
+                    <a class="btn btn-light text-black" href="{{path('diary.edit', {'id': contact.id})}}">Editar</a>
+                    <a class="btn btn-dark text-white" href="{{path('diary.delete', {'id': contact.id})}}">Eliminar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

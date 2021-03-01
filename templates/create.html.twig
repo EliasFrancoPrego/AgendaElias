@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}diary-Symfony{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 mt-2">
+            <h2 class="text-center">Agregar <i class="fa fa-plus"></i></h2>
+            {% if not diaryForm.vars.valid %}
+                <div class="alert alert-danger" role="alert">
+                    {% for error in diaryForm.vars.errors.form.getErrors(true) %}
+                        <p class="mb-0"><i class="fas fa-times"></i> {{ error.message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+        <div class="col-md-12">
+            {{ form_start(diaryForm)}}
+            <div class="form-group">
+                <label for="contact_type">{{form_label(diaryForm.Tipocontacto, null, {'label': 'Agenda'})}}</label>
+                {{form_widget(diaryForm.Tipocontacto, {'attr': {'class': 'form-control', 'Id': 'contact_type'}})}}
+            </div>
+            <div class="form-group">
+                <label for="name">{{form_label(diaryForm.name, null, {'label': 'Nombre'})}}</label>
+                {{form_widget(diaryForm.name, {'attr': {'class': 'form-control', 'id': 'name', 'placeholder': 'Nombre'}})}}
+            </div>
+            <div class="form-group">
+                <label for="lastName">{{form_label(diaryForm.lastName, null, {'label': 'Apellido'})}}</label>
+                {{form_widget(diaryForm.lastName, {'attr': {'class': 'form-control', 'id': 'lastName', 'placeholder': 'Apellido'}})}}
+            </div>
+            <div class="form-group">
+                <label for="phone">{{form_label(diaryForm.phone, null, {'label': 'Télefono'})}}</label>
+                {{form_widget(diaryForm.phone, {'attr': {'class': 'form-control', 'id': 'phone', 'placeholder': 'Telefono'}})}}
+            </div>
+            <div class="form-group">
+                <label for="email">{{form_label(diaryForm.email, null, {'label': 'Correo electronico'})}}</label>
+                {{form_widget(diaryForm.email, {'attr': {'class': 'form-control', 'id': 'email', 'placeholder': 'Email'}})}}
+            </div>
+            {{form_widget(diaryForm.save, {'attr': {'class': 'btn btn-dark text-white'}, 'label': 'Guardar datos'})}}
+            <a href="{{ path('diary') }}" class="btn btn-dark text-white"><i class="fas fa-long-arrow-alt-left"></i> Volver</a>
+            {{ form_end(diaryForm)}}
+        </div>
+    </div>
+</div>
+{% endblock %}
